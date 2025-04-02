@@ -8,15 +8,5 @@ function validarLogin() {
     }
 
     alert("Login realizado com sucesso!");
-    window.location.href = "index.html";
+    window.location.href = "home.html";  // Redireciona para a home
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.querySelector("form[action='#']");
-    if (loginForm) {
-        loginForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            validarLogin();
-        });
-    }
-});

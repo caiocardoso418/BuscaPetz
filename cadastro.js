@@ -15,15 +15,5 @@ function validarCadastro() {
     }
 
     alert("Cadastro realizado com sucesso!");
-    window.location.href = "login.html";
+    window.location.href = "home.html";  
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const cadastroForm = document.querySelector("form[action='#']");
-    if (cadastroForm) {
-        cadastroForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            validarCadastro();
-        });
-    }
-});
