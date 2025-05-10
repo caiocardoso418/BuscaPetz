@@ -35,7 +35,7 @@ def login_usuario():
         conn = conectar()
         cursor = conn.cursor(dictionary=True)
         cursor.execute(
-            "SELECT * FROM usuarios WHERE email = %s AND senha = %s", (email, senha))
+            "SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, senha))
         usuario = cursor.fetchone()
         if usuario:
             return jsonify({'mensagem': 'Login realizado com sucesso'}), 200
