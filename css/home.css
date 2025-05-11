@@ -141,3 +141,16 @@ p {
     text-transform: uppercase;
     font-weight: bold;
 }
+
+.perfil-box {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 999;
+    width: 250px;
+}
+

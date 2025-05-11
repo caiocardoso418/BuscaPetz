@@ -28,6 +28,8 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         alert(dados.mensagem || dados.erro);
 
         if (resposta.status === 200) {
+            localStorage.setItem("usuarioLogado", email);
+            localStorage.setItem("usuarioNome", dados.nome);
             window.location.href = "home.html";
         }
     } catch (error) {
@@ -35,3 +37,4 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         alert("Erro ao conectar com o servidor.");
     }
 });
+

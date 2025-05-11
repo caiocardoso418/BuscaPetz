@@ -38,7 +38,11 @@ def login_usuario():
             "SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, senha))
         usuario = cursor.fetchone()
         if usuario:
-            return jsonify({'mensagem': 'Login realizado com sucesso'}), 200
+            return jsonify({
+                'mensagem': 'Login realizado com sucesso',
+                'email': usuario['email'],
+                'nome': usuario['nome']  # <== AQUI pega o nome real
+            }), 200
         else:
             return jsonify({'erro': 'Credenciais inválidas'}), 401
     except Exception as e:
