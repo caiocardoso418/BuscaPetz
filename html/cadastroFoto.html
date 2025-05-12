@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Anúncio Pet - Foto</title>
+  <link rel="stylesheet" href="../css/cadastroFoto.css">
+</head>
+<body>
+  <div class="container">
+    <div class="titulo">
+      <h1>Criar Anuncio Pet</h1>
+    </div>
+    <div class="conteudo">
+      <p class="instrucoes">
+        Adicione a foto do pet. Usaremos essa foto em todas as ferramentas de divulgação, como cartazes, posts em redes sociais e anúncios.
+      </p>
+
+      <div class="upload-box" onclick="document.getElementById('foto').click()">
+        <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt="Ícone de imagem" class="icone">
+        <p>Arraste uma imagem nesta área, ou clique para selecionar uma imagem.</p>
+        <small>Para obter máximo resultado, prefira fotos onde apareça apenas o seu pet em evidência, sem escritos adicionais.</small>
+        <input type="file" id="foto" accept="image/*" hidden>
+      </div>
+
+      <button class="prosseguir">Prosseguir</button>
+    </div>
+  </div>
+</body>
+</html>

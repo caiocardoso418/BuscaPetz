@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Anúncio Pet</title>
+  <link rel="stylesheet" href="../css/cadastroNome.css">
+</head>
+<body>
+  <div class="container">
+    <div class="titulo">
+      <h1>Criar Anuncio Pet</h1>
+    </div>
+    <div class="form-box">
+      <h2>Cadastro</h2>
+      <form>
+        <label for="situacao">Situação</label>
+        <input type="text" id="situacao" value="Perdido" disabled>
+
+        <label for="especie">Espécie</label>
+        <select id="especie" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="Cachorro">Cachorro</option>
+          <option value="Gato">Gato</option>
+        </select>
+
+        <label for="genero">Gênero</label>
+        <select id="genero" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="Fêmea">Fêmea</option>
+          <option value="Macho">Macho</option>
+        </select>
+
+        <button type="submit">Prosseguir</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
