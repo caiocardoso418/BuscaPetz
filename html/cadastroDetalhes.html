@@ -12,7 +12,7 @@
     </div>
     <div class="form-box">
       <h2>Cadastro</h2>
-      <form>
+      <form onsubmit="proximaEtapa(event)">
         <label for="raca">Raça</label>
         <input type="text" id="raca" name="raca" placeholder="Digite a raça" required>
 
@@ -30,5 +30,26 @@
       </form>
     </div>
   </div>
+
+  <script>
+    function proximaEtapa(event) {
+      event.preventDefault();
+
+      const raca = document.getElementById("raca").value;
+      const cor = document.getElementById("cor").value;
+      const porte = document.querySelector("input[name='porte']:checked");
+
+      if (!raca || !cor || !porte) {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      localStorage.setItem("raca", raca);
+      localStorage.setItem("porte", porte.value);
+      localStorage.setItem("cor", cor);
+
+      window.location.href = "../html/cadastroDesc.html";
+    }
+  </script>
 </body>
 </html>

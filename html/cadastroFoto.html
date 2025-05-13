@@ -22,8 +22,29 @@
         <input type="file" id="foto" accept="image/*" hidden>
       </div>
 
-      <button class="prosseguir">Prosseguir</button>
+      <button class="prosseguir" onclick="proximaEtapa()">Prosseguir</button>
     </div>
   </div>
+
+  <script>
+    let fotoSelecionada = "";
+
+    document.getElementById("foto").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        fotoSelecionada = file.name;
+        localStorage.setItem("foto", fotoSelecionada); // Simula o caminho da foto
+        alert("Foto selecionada: " + fotoSelecionada);
+      }
+    });
+
+    function proximaEtapa() {
+      if (!localStorage.getItem("foto")) {
+        alert("Por favor, selecione uma imagem antes de prosseguir.");
+        return;
+      }
+      window.location.href = "../html/cadastroDetalhes.html";
+    }
+  </script>
 </body>
 </html>

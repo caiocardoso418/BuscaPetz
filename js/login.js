@@ -30,7 +30,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         if (resposta.status === 200) {
             localStorage.setItem("usuarioLogado", email);
             localStorage.setItem("usuarioNome", dados.nome);
-            window.location.href = "home.html";
+            localStorage.setItem("id_usuario", dados.id_usuario); // além de nome e email
+
+            window.location.href = "../html/home.html";
         }
     } catch (error) {
         console.error("Erro no login:", error);

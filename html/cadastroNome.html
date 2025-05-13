@@ -12,7 +12,7 @@
     </div>
     <div class="form-box">
       <h2>Cadastro</h2>
-      <form>
+      <form onsubmit="proximaEtapa(event)">
         <label for="situacao">Situação</label>
         <input type="text" id="situacao" value="Perdido" disabled>
 
@@ -34,5 +34,27 @@
       </form>
     </div>
   </div>
+
+  <script>
+    function proximaEtapa(event) {
+      event.preventDefault(); // Impede envio do formulário
+
+      const especie = document.getElementById("especie").value;
+      const genero = document.getElementById("genero").value;
+
+      if (!especie || !genero) {
+        alert("Por favor, selecione todas as opções.");
+        return;
+      }
+
+      // Armazena no localStorage
+      localStorage.setItem("situacao", "Perdido");
+      localStorage.setItem("especie", especie);
+      localStorage.setItem("genero", genero);
+
+      // Redireciona para a próxima etapa
+      window.location.href = "../html/cadastroFoto.html";
+    }
+  </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     </div>
     <div class="form-box">
       <h2>Cadastro</h2>
-      <form>
+      <form onsubmit="proximaEtapa(event)">
         <label for="endereco">Endereço</label>
         <textarea id="endereco" name="endereco" rows="3" placeholder="Insira o endereço onde pet foi visto ou encontrado" required></textarea>
 
@@ -20,5 +20,22 @@
       </form>
     </div>
   </div>
+
+  <script>
+    function proximaEtapa(event) {
+      event.preventDefault();
+
+      const endereco = document.getElementById("endereco").value;
+
+      if (!endereco) {
+        alert("Por favor, preencha o endereço.");
+        return;
+      }
+
+      localStorage.setItem("endereco", endereco);
+
+      window.location.href = "../html/cadastroFinal.html";
+    }
+  </script>
 </body>
 </html>
