@@ -6,6 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     const usuarioNome = localStorage.getItem("usuarioNome");
+    const btnPerdiPet = document.getElementById("btn-perdi-pet");
+    if (btnPerdiPet) {
+        btnPerdiPet.addEventListener("click", () => {
+            window.location.href = "../html/cadastroNome.html";
+        });
+    }
+
 
     if (usuarioLogado) {
         // Oculta login/cadastro e mostra perfil/sair
@@ -114,3 +121,6 @@ function logout() {
     localStorage.removeItem("usuarioNome");
     window.location.reload();
 }
+
+
+
