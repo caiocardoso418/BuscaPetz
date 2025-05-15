@@ -100,7 +100,7 @@ def listar_publicacoes():
         conn = conectar()
         cursor = conn.cursor(dictionary=True)
         cursor.execute(
-            "SELECT nome, status, foto, endereco, data_desaparecimento FROM animal ORDER BY data_desaparecimento DESC")
+            "SELECT nome, status, foto, endereco, data_desaparecimento, telefone FROM animal ORDER BY data_desaparecimento DESC")
         animais = cursor.fetchall()
         return jsonify(animais), 200
     except Exception as e:

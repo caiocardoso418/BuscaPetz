@@ -81,71 +81,100 @@ p {
     border-radius: 20px;
 }
 
-/* Seção Dinâmica de Pets */
 #pets-container {
-    margin: 50px 20px;
-    padding: 20px;
-    border-radius: 15px;
-    background: #f9f4ff;
+  margin: 40px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #ffe6e6, #e6d6ff);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
+
 
 .pets-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
+
 .pet-card {
-    background: white;
-    border-radius: 15px;
-    width: 220px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
+  background: white;
+  border-radius: 30px;
+  width: 220px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+
 
 .pet-card:hover {
     transform: translateY(-5px);
 }
 
 .status {
-    padding: 10px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    background: red;
-    font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: white;
+  text-transform: capitalize;
 }
+
+.status.perdido {
+  background: #ff4d4d;
+}
+
+.status.achado {
+  background: #4d79ff;
+}
+
+.status.adocao {
+  background: #47d147;
+}
+
 
 /* Espaço para a imagem */
 .pet-card img {
-    width: 100%;
+    width: 180px;
     height: 180px;
     object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 /* Informações abaixo da imagem */
 .pet-info {
-    padding: 10px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
 .pet-info h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0;
-    color: #1a1a1a;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 5px;
 }
 
 .pet-info p {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
+  font-size: 14px;
+  color: #333;
+  margin: 2px 0;
 }
 
 /* Estrela (favorito) */
@@ -156,9 +185,28 @@ p {
 }
 
 
-.pet-imagem {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+.carousel-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 0;
+  background: #f9f4ff;
+}
+
+.nav-btn {
+  background: #6A0DAD;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pets-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
