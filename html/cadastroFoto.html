@@ -26,25 +26,7 @@
     </div>
   </div>
 
-  <script>
-    let fotoSelecionada = "";
+  <script src="../js/cadastroFoto.js"></script>
 
-    document.getElementById("foto").addEventListener("change", function (e) {
-      const file = e.target.files[0];
-      if (file) {
-        fotoSelecionada = file.name;
-        localStorage.setItem("foto", fotoSelecionada); // Simula o caminho da foto
-        alert("Foto selecionada: " + fotoSelecionada);
-      }
-    });
-
-    function proximaEtapa() {
-      if (!localStorage.getItem("foto")) {
-        alert("Por favor, selecione uma imagem antes de prosseguir.");
-        return;
-      }
-      window.location.href = "../html/cadastroDetalhes.html";
-    }
-  </script>
 </body>
 </html>

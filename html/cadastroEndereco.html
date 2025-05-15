@@ -21,21 +21,7 @@
     </div>
   </div>
 
-  <script>
-    function proximaEtapa(event) {
-      event.preventDefault();
+ <script src="../js/cadastroEndereco.js"></script>
 
-      const endereco = document.getElementById("endereco").value;
-
-      if (!endereco) {
-        alert("Por favor, preencha o endereço.");
-        return;
-      }
-
-      localStorage.setItem("endereco", endereco);
-
-      window.location.href = "../html/cadastroFinal.html";
-    }
-  </script>
 </body>
 </html>

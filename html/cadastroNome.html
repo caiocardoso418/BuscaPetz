@@ -35,26 +35,7 @@
     </div>
   </div>
 
-  <script>
-    function proximaEtapa(event) {
-      event.preventDefault(); // Impede envio do formulário
+  <script src="../js/cadastroNome.js"></script>
 
-      const especie = document.getElementById("especie").value;
-      const genero = document.getElementById("genero").value;
-
-      if (!especie || !genero) {
-        alert("Por favor, selecione todas as opções.");
-        return;
-      }
-
-      // Armazena no localStorage
-      localStorage.setItem("situacao", "Perdido");
-      localStorage.setItem("especie", especie);
-      localStorage.setItem("genero", genero);
-
-      // Redireciona para a próxima etapa
-      window.location.href = "../html/cadastroFoto.html";
-    }
-  </script>
 </body>
 </html>

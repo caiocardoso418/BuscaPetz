@@ -24,23 +24,7 @@
     </div>
   </div>
 
-  <script>
-    function proximaEtapa(event) {
-      event.preventDefault();
+  <script src="../js/cadastroDesc.js"></script>
 
-      const nome = document.getElementById("nome").value;
-      const descricao = document.getElementById("descricao").value;
-
-      if (!nome || !descricao) {
-        alert("Preencha todos os campos.");
-        return;
-      }
-
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("descricao", descricao);
-
-      window.location.href = "../html/cadastroEndereco.html";
-    }
-  </script>
 </body>
 </html>
