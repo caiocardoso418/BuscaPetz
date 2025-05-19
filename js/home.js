@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             renderizarPets();
         }
     });
+    document.getElementById("btn-comentar").addEventListener("click", enviarComentario);
+
 
     carregarPets();
 });
@@ -78,17 +80,21 @@ function renderizarPets() {
 
         card.innerHTML = `
             <div class="status ${statusClass}">${pet.status}</div>
-  <img src="${pet.foto}" alt="${pet.nome}" class="pet-imagem">
-  <div class="pet-info">
-    <h3>${pet.nome}</h3>
-    <p>${pet.telefone || "Telefone não informado"}</p>
-    <p>${pet.endereco || "Local não informado"}<br>Brasília</p>
-  </div>
-`;
+            <img src="${pet.foto}" alt="${pet.nome}" class="pet-imagem">
+            <div class="pet-info">
+                <h3>${pet.nome}</h3>
+                <p>${pet.telefone || "Telefone não informado"}</p>
+                <p>${pet.endereco || "Local não informado"}<br>Brasília</p>
+            </div>
+        `;
+
+        // Aqui adicionamos o evento corretamente
+        card.addEventListener("click", () => abrirModal(pet));
 
         container.appendChild(card);
     });
 }
+
 
 function formatarTempo(dataStr) {
     const data = new Date(dataStr);
@@ -107,4 +113,63 @@ function mostrarPerfil() {
 function logout() {
     localStorage.clear();
     window.location.reload();
+}
+
+
+
+function abrirModal(pet) {
+  document.getElementById("modal-publicacao").style.display = "flex";
+  document.getElementById("modal-foto").src = pet.foto;
+  document.getElementById("modal-nome").textContent = pet.nome;
+  document.getElementById("modal-status").textContent = pet.status;
+  document.getElementById("modal-especie").textContent = pet.especie;
+  document.getElementById("modal-genero").textContent = pet.genero;
+  document.getElementById("modal-raca").textContent = pet.raca;
+  document.getElementById("modal-cor").textContent = pet.cor;
+  document.getElementById("modal-porte").textContent = pet.porte;
+  document.getElementById("modal-descricao").textContent = pet.descricao;
+  document.getElementById("modal-telefone").textContent = pet.telefone;
+  document.getElementById("modal-endereco").textContent = pet.endereco;
+  document.getElementById("modal-data").textContent = new Date(pet.data_desaparecimento).toLocaleDateString("pt-BR");
+  localStorage.setItem("animal_modal_id", pet.id_animal);
+  carregarComentarios(pet.id_animal);
+
+}
+
+function fecharModal() {
+  document.getElementById("modal-publicacao").style.display = "none";
+}
+
+async function carregarComentarios(id_animal) {
+    const res = await fetch(`http://127.0.0.1:5000/comentarios/${id_animal}`);
+    const comentarios = await res.json();
+    const lista = document.getElementById("lista-comentarios");
+    lista.innerHTML = "";
+
+    comentarios.forEach(c => {
+        const div = document.createElement("div");
+        div.classList.add("comentario");
+        div.innerHTML = `<strong>${c.nome}</strong><br>${c.texto}<hr>`;
+        lista.appendChild(div);
+    });
+}
+
+
+async function enviarComentario() {
+    const texto = document.getElementById("input-comentario").value;
+    const id_usuario = localStorage.getItem("id_usuario");
+    const id_animal = localStorage.getItem("animal_modal_id");
+
+    if (!texto.trim()) return;
+
+    const res = await fetch("http://127.0.0.1:5000/comentar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id_usuario, id_animal, texto })
+    });
+
+    if (res.ok) {
+        document.getElementById("input-comentario").value = "";
+        carregarComentarios(id_animal);
+    }
 }

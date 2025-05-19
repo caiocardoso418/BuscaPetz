@@ -59,5 +59,42 @@
         <button onclick="fecharPerfil()">Fechar</button>
     </div>
 
+<!-- Modal da publicação -->
+    <div id="modal-publicacao" class="modal">
+    <div class="modal-content">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+
+        <div class="modal-esquerda">
+        <img id="modal-foto" src="" alt="Foto do pet" class="modal-img">
+        <div class="modal-info">
+            <h2 id="modal-nome"></h2>
+            <p><strong>Status:</strong> <span id="modal-status"></span></p>
+            <p><strong>Espécie:</strong> <span id="modal-especie"></span></p>
+            <p><strong>Gênero:</strong> <span id="modal-genero"></span></p>
+            <p><strong>Raça:</strong> <span id="modal-raca"></span></p>
+            <p><strong>Cor:</strong> <span id="modal-cor"></span></p>
+            <p><strong>Porte:</strong> <span id="modal-porte"></span></p>
+            <p><strong>Descrição:</strong> <span id="modal-descricao"></span></p>
+            <p><strong>Telefone:</strong> <span id="modal-telefone"></span></p>
+            <p><strong>Endereço:</strong> <span id="modal-endereco"></span></p>
+            <p><strong>Desaparecimento:</strong> <span id="modal-data"></span></p>
+        </div>
+        </div>
+
+        <div class="modal-direita">
+        <h3>Comentários</h3>
+        <div id="lista-comentarios" class="comentarios-lista">
+            <!-- Comentários serão inseridos aqui -->
+        </div>
+        <div class="comentar-box">
+            <input type="text" id="input-comentario" placeholder="Comente aqui">
+            <button onclick="enviarComentario()">SEND</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+
 </body>
 </html>

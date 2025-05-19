@@ -99,8 +99,12 @@ def listar_publicacoes():
     try:
         conn = conectar()
         cursor = conn.cursor(dictionary=True)
-        cursor.execute(
-            "SELECT nome, status, foto, endereco, data_desaparecimento, telefone FROM animal ORDER BY data_desaparecimento DESC")
+        cursor.execute("""
+            SELECT id_animal, nome, status, foto, endereco, data_desaparecimento, telefone,
+                   especie, genero, raca, cor, porte, descricao
+            FROM animal
+            ORDER BY data_desaparecimento DESC
+        """)
         animais = cursor.fetchall()
         return jsonify(animais), 200
     except Exception as e:
@@ -128,3 +132,50 @@ def upload_imagem():
 
     # Retorna o caminho relativo para uso no front
     return jsonify({'caminho': f'/static/uploads/{filename}'}), 200
+
+
+@routes.route('/comentar', methods=['POST'])
+def adicionar_comentario():
+    data = request.get_json()
+    id_usuario = data.get('id_usuario')
+    id_animal = data.get('id_animal')
+    texto = data.get('texto')
+
+    if not id_usuario or not id_animal or not texto:
+        return jsonify({'erro': 'Campos obrigatórios faltando'}), 400
+
+    try:
+        conn = conectar()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO comentario (id_usuario, id_animal, texto) VALUES (%s, %s, %s)",
+            (id_usuario, id_animal, texto)
+        )
+        conn.commit()
+        return jsonify({'mensagem': 'Comentário adicionado com sucesso'}), 201
+    except Exception as e:
+        return jsonify({'erro': str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+
+@routes.route('/comentarios/<int:id_animal>', methods=['GET'])
+def listar_comentarios(id_animal):
+    try:
+        conn = conectar()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT c.texto, u.nome, c.data_comentario
+            FROM Comentario c
+            JOIN Usuario u ON c.id_usuario = u.id_usuario
+            WHERE c.id_animal = %s
+            ORDER BY c.data_comentario DESC
+        """, (id_animal,))
+        comentarios = cursor.fetchall()
+        return jsonify(comentarios), 200
+    except Exception as e:
+        return jsonify({'erro': str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
