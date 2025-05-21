@@ -3,8 +3,14 @@ from db import conectar
 import os
 from werkzeug.utils import secure_filename
 from flask import current_app
+from flask import send_from_directory
 
 routes = Blueprint('routes', __name__)
+
+
+@routes.route('/html/<path:filename>')
+def servir_html(filename):
+    return send_from_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'html')), filename)
 
 
 @routes.route('/cadastro', methods=['POST'])
@@ -124,13 +130,12 @@ def upload_imagem():
         return jsonify({'erro': 'Nome de arquivo vazio'}), 400
 
     filename = secure_filename(file.filename)
-    pasta_uploads = os.path.join(current_app.root_path, 'static', 'uploads')
-    os.makedirs(pasta_uploads, exist_ok=True)  # Garante que a pasta exista
+    pasta_uploads = current_app.config['UPLOAD_FOLDER']
+    os.makedirs(pasta_uploads, exist_ok=True)
 
     caminho = os.path.join(pasta_uploads, filename)
     file.save(caminho)
 
-    # Retorna o caminho relativo para uso no front
     return jsonify({'caminho': f'/static/uploads/{filename}'}), 200
 
 
