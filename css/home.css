@@ -82,12 +82,12 @@ p {
 }
 
 #pets-container {
-  margin: 10px auto;
-  padding: 10px;
+  margin: 40px auto;
+  padding: 20px;
   width: 90%;
   max-width: 1200px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #004add, #cb6ce6);
+  background: linear-gradient(90deg, #ffe6e6, #e6d6ff);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -148,28 +148,6 @@ p {
   background: #47d147;
 }
 
-.status.procurando {
-  background: #1100ff; /* Laranja vibrante */
-  color: white;
-}
-
-.titulo-section {
-  margin-top: 10px;
-  text-align: center;
-  ;
-}
-
-.titulo-pets {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1a1a1a;
-  font-family: Arial, sans-serif;
-  margin-bottom: 10px;
-}
-
-
-
-
 
 /* Espaço para a imagem */
 .pet-card img {
@@ -199,6 +177,12 @@ p {
   margin: 2px 0;
 }
 
+/* Estrela (favorito) */
+.favorite-icon {
+    color: #f4b400;
+    font-size: 18px;
+    margin-left: auto;
+}
 
 
 .carousel-section {
@@ -207,7 +191,7 @@ p {
   justify-content: center;
   gap: 20px;
   padding: 40px 0;
-  background: linear-gradient(90deg, #004add, #cb6ce6);
+  background: #f9f4ff;
 }
 
 .nav-btn {
@@ -384,3 +368,38 @@ p {
 }
 
 
+.filtros {
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f0ff;
+  border-radius: 15px;
+  max-width: 1000px;
+}
+
+.filtros h3 {
+  margin-bottom: 15px;
+  color: #6A0DAD;
+}
+
+.filtros form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.filtros select,
+.filtros button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.filtros button {
+  background-color: #6A0DAD;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
