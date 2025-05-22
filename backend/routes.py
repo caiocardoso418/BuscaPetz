@@ -73,7 +73,7 @@ def anunciar_pet():
 
         sql = """
         INSERT INTO animal (nome, descricao, especie, genero, raca, porte, cor, endereco, foto, data_desaparecimento, telefone, status, id_usuario)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'perdido', %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
         valores = (
             data.get("nome"),
@@ -87,6 +87,7 @@ def anunciar_pet():
             data.get("foto"),
             data.get("data_desaparecimento"),
             data.get("telefone"),
+            data.get("status"),
             data.get("id_usuario")
         )
         cursor.execute(sql, valores)

@@ -1,25 +1,23 @@
-// js/cadastroNome.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Impede envio do formulário
+    event.preventDefault();
 
+    const situacao = document.getElementById("situacao").value;
     const especie = document.getElementById("especie").value;
     const genero = document.getElementById("genero").value;
 
-    if (!especie || !genero) {
-      alert("Por favor, selecione todas as opções.");
+    if (!situacao || !especie || !genero) {
+      alert("Por favor, preencha todos os campos.");
       return;
     }
 
-    // Armazena no localStorage
-    localStorage.setItem("situacao", "Perdido");
+    // Armazena os dados
+    localStorage.setItem("status", situacao);
     localStorage.setItem("especie", especie);
     localStorage.setItem("genero", genero);
 
-    // Redireciona para a próxima etapa
     window.location.href = "../html/cadastroFoto.html";
   });
 });

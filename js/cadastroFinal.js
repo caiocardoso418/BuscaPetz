@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
             data_desaparecimento: localStorage.getItem("data_desaparecimento"),
             telefone: localStorage.getItem("telefone"),
             id_usuario: localStorage.getItem("id_usuario"),
-            foto: localStorage.getItem("foto")
+            foto: localStorage.getItem("foto"),
+            status: localStorage.getItem("status")
         };
 
         try {
