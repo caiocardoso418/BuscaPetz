@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("especie", especie);
     localStorage.setItem("genero", genero);
 
+    // Redireciona para a próxima etapa
     window.location.href = "../html/cadastroFoto.html";
   });
 });

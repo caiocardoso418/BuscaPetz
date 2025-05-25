@@ -71,14 +71,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function carregarPets() {
-  try {
-    const resposta = await fetch("http://127.0.0.1:5000/publicacoes");
-    listaPets = await resposta.json();
-    aplicarFiltros();
-  } catch (error) {
-    console.error("Erro ao carregar pets:", error);
-  }
+    try {
+        const resposta = await fetch("http://127.0.0.1:5000/publicacoes");
+        const dados = await resposta.json();
+
+        // Filtrar apenas Perdidos e Encontrados
+        listaPets = dados.filter(pet => {
+            const status = pet.status.toLowerCase();
+            return status === "perdido" || status === "encontrado";
+        });
+
+        aplicarFiltros(); // aplica os filtros visuais
+    } catch (error) {
+        console.error("Erro ao carregar pets:", error);
+    }
 }
+
 
 function aplicarFiltros() {
   const filtrados = listaPetsFiltrada();

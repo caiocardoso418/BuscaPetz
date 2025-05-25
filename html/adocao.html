@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pets para Adoção - Buscapetz</title>
+  <link rel="stylesheet" href="../css/adocao.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo">BUSCAPETZ</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="adocao.html" class="ativo">Adoção</a></li>
+        <li id="login-link"><a href="login.html">Login</a></li>
+        <li id="cadastro-link"><a href="cadastro.html">Cadastro</a></li>
+        <li id="perfil-link" style="display: none;"><a href="#">Perfil (<span id="usuario-nome"></span>)</a></li>
+        <li id="logout-link" style="display: none;"><a href="#" onclick="logout()">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+    <h2 class="titulo-pets">Pets Disponíveis para Adoção</h2>
+    <section class="carousel-section">
+      <button id="prev-btn" class="nav-btn">&lsaquo;</button>
+      <div id="pets-container" class="pets-list"></div>
+      <button id="next-btn" class="nav-btn">&rsaquo;</button>
+    </section>
+  </main>
+    <!-- Modal da publicação -->
+    <div id="modal-publicacao" class="modal">
+    <div class="modal-content">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+
+        <div class="modal-esquerda">
+        <img id="modal-foto" src="" alt="Foto do pet" class="modal-img">
+        <div class="modal-info">
+            <h2 id="modal-nome"></h2>
+            <p><strong>Status:</strong> <span id="modal-status"></span></p>
+            <p><strong>Espécie:</strong> <span id="modal-especie"></span></p>
+            <p><strong>Gênero:</strong> <span id="modal-genero"></span></p>
+            <p><strong>Raça:</strong> <span id="modal-raca"></span></p>
+            <p><strong>Cor:</strong> <span id="modal-cor"></span></p>
+            <p><strong>Porte:</strong> <span id="modal-porte"></span></p>
+            <p><strong>Descrição:</strong> <span id="modal-descricao"></span></p>
+            <p><strong>Telefone:</strong> <span id="modal-telefone"></span></p>
+            <p><strong>Endereço:</strong> <span id="modal-endereco"></span></p>
+            <p><strong>Desaparecimento:</strong> <span id="modal-data"></span></p>
+        </div>
+        </div>
+
+        <div class="modal-direita">
+        <h3>Comentários</h3>
+        <div id="lista-comentarios" class="comentarios-lista">
+            <!-- Comentários serão inseridos aqui -->
+        </div>
+        <div class="comentar-box">
+            <input type="text" id="input-comentario" placeholder="Comente aqui">
+            <button id="btn-comentar">SEND</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+  <script src="../js/adocao.js"></script>
+</body>
+
+</html>

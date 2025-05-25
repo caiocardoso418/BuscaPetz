@@ -47,8 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     "especie", "genero", "raca", "porte", "cor",
                     "nome", "descricao", "endereco", "data_desaparecimento", "telefone"
                 ].forEach(item => localStorage.removeItem(item));
+                const status = localStorage.getItem("status");
 
-                window.location.href = "home.html";
+
+                if (status === "para adoção" || status === "adotado") {
+                    window.location.href = "adocao.html";
+                } else {
+                    window.location.href = "home.html";
+                }
+
             } else {
                 alert("Erro ao cadastrar: " + result.erro);
             }
