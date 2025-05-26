@@ -138,6 +138,33 @@ function renderizarPets(petsFiltrados) {
       </div>
     `;
 
+    // ⭐ Estrela de favorito
+    const estrela = document.createElement("span");
+    estrela.className = "favorite-icon";
+    estrela.innerHTML = "⭐";
+    estrela.style.cursor = "pointer";
+    estrela.style.fontSize = "22px";
+    estrela.style.marginTop = "5px";
+    estrela.style.color = "#ffffff"; // branco por padrão
+
+    // Verifica se está favoritado (via localStorage ou consulta futura)
+    const id_usuario = localStorage.getItem("id_usuario");
+
+    estrela.onclick = async (e) => {
+      e.stopPropagation(); // Não abrir modal ao clicar na estrela
+
+      const res = await fetch("http://127.0.0.1:5000/favoritar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id_usuario, id_animal: pet.id_animal })
+      });
+
+      const result = await res.json();
+      estrela.style.color = result.favoritado ? "gold" : "#ffffff";
+    };
+
+
+    card.appendChild(estrela);
     card.addEventListener("click", () => abrirModal(pet));
     container.appendChild(card);
   });
@@ -149,10 +176,10 @@ function mostrarPerfil() {
   document.getElementById("perfil-box").style.display = "block";
 }
 
-function logout() {
-  localStorage.clear();
-  window.location.reload();
+function fecharPerfil() {
+  document.getElementById("perfil-box").style.display = "none";
 }
+
 
 function abrirModal(pet) {
   document.getElementById("modal-publicacao").style.display = "flex";
@@ -207,4 +234,9 @@ async function enviarComentario() {
     document.getElementById("input-comentario").value = "";
     carregarComentarios(id_animal);
   }
+}
+
+function logout() {
+  localStorage.clear();
+  location.reload(); // ou location.reload()
 }

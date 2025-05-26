@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Favoritos - Buscapetz</title>
+  <link rel="stylesheet" href="../css/favoritos.css">
+</head>
+<body>
+  <header>
+    <h1 class="logo">BUSCAPETZ</h1>
+    <nav>
+      <ul id="menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="adocao.html">Adoção</a></li>
+        <li id="login-link"><a href="login.html">Login</a></li>
+        <li id="cadastro-link"><a href="cadastro.html">Cadastro</a></li>
+        <li id="perfil-link" style="display: none;"><a href="#">Perfil (<span id="usuario-nome"></span>)</a></li>
+        <li id="logout-link" style="display: none;"><a href="#">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <main>
+    <h2 class="titulo-pets">Meus Favoritos</h2>
+    <section class="carousel-section">
+        <button id="prev-btn" class="nav-btn">⟨</button>
+        <div id="pets-container" class="pets-list"></div>
+        <button id="next-btn" class="nav-btn">⟩</button>
+    </section>
+    </main>
+
+
+  <script src="../js/favoritos.js"></script>
+</body>
+</html>

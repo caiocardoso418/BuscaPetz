@@ -98,12 +98,19 @@
     <script src="../js/home.js"></script>
 
         <!-- Caixa de Perfil -->
-    <div id="perfil-box" class="perfil-box" style="display: none;">
+    <!-- Caixa de Perfil -->
+    <div id="perfil-box" class="perfil-box">
+    <div class="perfil-conteudo">
         <h3>Perfil do Usuário</h3>
         <p><strong>Email:</strong> <span id="perfil-email"></span></p>
         <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
-        <button onclick="fecharPerfil()">Fechar</button>
+        
+        <a href="../html/favorito.html" class="btn-favoritos">⭐ Meus Favoritos</a>
+
+        <button onclick="fecharPerfil()" class="btn-fechar-perfil">Fechar</button>
     </div>
+    </div>
+
 
 <!-- Modal da publicação -->
     <div id="modal-publicacao" class="modal">

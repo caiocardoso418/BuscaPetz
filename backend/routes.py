@@ -185,3 +185,56 @@ def listar_comentarios(id_animal):
     finally:
         cursor.close()
         conn.close()
+
+
+@routes.route('/favoritar', methods=['POST'])
+def favoritar_pet():
+    data = request.get_json()
+    id_usuario = data.get("id_usuario")
+    id_animal = data.get("id_animal")
+
+    try:
+        conn = conectar()
+        cursor = conn.cursor()
+
+        # Tenta adicionar, se já existir, remove
+        cursor.execute(
+            "SELECT * FROM favorito WHERE id_usuario = %s AND id_animal = %s", (id_usuario, id_animal))
+        existe = cursor.fetchone()
+
+        if existe:
+            cursor.execute(
+                "DELETE FROM favorito WHERE id_usuario = %s AND id_animal = %s", (id_usuario, id_animal))
+            conn.commit()
+            return jsonify({"favoritado": False}), 200
+        else:
+            cursor.execute(
+                "INSERT INTO favorito (id_usuario, id_animal) VALUES (%s, %s)", (id_usuario, id_animal))
+            conn.commit()
+            return jsonify({"favoritado": True}), 201
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+
+@routes.route('/favoritos/<int:id_usuario>', methods=['GET'])
+def listar_favoritos(id_usuario):
+    try:
+        conn = conectar()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT a.*
+            FROM animal a
+            JOIN favorito f ON a.id_animal = f.id_animal
+            WHERE f.id_usuario = %s
+            ORDER BY a.data_desaparecimento DESC
+        """, (id_usuario,))
+        favoritos = cursor.fetchall()
+        return jsonify(favoritos), 200
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
