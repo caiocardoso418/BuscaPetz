@@ -8,18 +8,20 @@
 <body>
   <div class="container">
     <div class="titulo">
-      <h1>Criar Anuncio Pet</h1>
+      <h1>Criar Anúncio Pet</h1>
     </div>
     <div class="form-box">
       <h2>Cadastro</h2>
       <form onsubmit="finalizarCadastro(event)">
-        <label for="data">Data do desaparecimento</label>
-        <div class="input-icon">
-          <span class="icon">📅</span>
-          <input type="date" id="data" name="data" required>
+        <div id="campo-data">
+          <label for="data">Data do desaparecimento</label>
+          <div class="input-icon">
+            <span class="icon">📅</span>
+            <input type="date" id="data" name="data">
+          </div>
         </div>
 
-        <label for="telefone">Telefone pra contato</label>
+        <label for="telefone">Telefone para contato</label>
         <input type="tel" id="telefone" name="telefone" placeholder="Insira seu número" required>
 
         <button type="submit">Finalizar</button>
@@ -27,8 +29,19 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const status = localStorage.getItem("status");
+      const campoData = document.getElementById("campo-data");
+
+      // Esconde a data se for anúncio de adoção
+      if (status && status.toLowerCase().includes("adoção")) {
+        campoData.style.display = "none";
+        document.getElementById("data").required = false;
+      }
+    });
+  </script>
+
   <script src="../js/cadastroFinal.js"></script>
-
-
 </body>
 </html>

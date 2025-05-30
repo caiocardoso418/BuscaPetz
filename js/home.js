@@ -7,7 +7,8 @@ let filtros = {
   cor: "",
   genero: "",
   porte: "",
-  bairro: ""
+  bairro: "",
+  texto:""
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,8 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const perfilLink = document.getElementById("perfil-link");
   const logoutLink = document.getElementById("logout-link");
   const btnPerdiPet = document.getElementById("btn-perdi-pet");
-
+  const inputTexto = document.getElementById("filtro-texto");
   const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  inputTexto.addEventListener("input", () => {
+    filtros.texto = inputTexto.value.trim().toLowerCase();
+    paginaAtual = 0;
+    aplicarFiltros();
+  });
+
   if (usuarioLogado) {
     loginLink.style.display = "none";
     cadastroLink.style.display = "none";
@@ -100,9 +108,17 @@ function listaPetsFiltrada() {
     const matchGenero = filtros.genero === "" || pet.genero === filtros.genero;
     const matchPorte = filtros.porte === "" || pet.porte === filtros.porte;
     const matchBairro = filtros.bairro === "" || (pet.endereco && pet.endereco.includes(filtros.bairro));
-    return matchEspecie && matchCor && matchGenero && matchPorte && matchBairro;
+    
+    const texto = filtros.texto;
+    const matchTexto =
+      texto === "" ||
+      (pet.nome && pet.nome.toLowerCase().includes(texto)) ||
+      (pet.raca && pet.raca.toLowerCase().includes(texto));
+
+    return matchEspecie && matchCor && matchGenero && matchPorte && matchBairro && matchTexto;
   });
 }
+
 
 function renderizarPets(petsFiltrados) {
   const container = document.getElementById("pets-container");

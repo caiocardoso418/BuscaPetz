@@ -108,7 +108,7 @@ def listar_publicacoes():
         cursor = conn.cursor(dictionary=True)
         cursor.execute("""
             SELECT id_animal, nome, status, foto, endereco, data_desaparecimento, telefone,
-                   especie, genero, raca, cor, porte, descricao
+                   especie, genero, raca, cor, porte, descricao, id_usuario
             FROM animal
             ORDER BY data_desaparecimento DESC
         """)

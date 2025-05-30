@@ -12,7 +12,7 @@
         <h1 class="logo">BUSCA PETZ</h1>
         <nav>
             <ul id="menu">
-                <li><a href="#">Busca</a></li>
+                <li><a href="../html/blog.html">Blog</a></li>
                 <li><a href="../html/adocao.html">Adoção</a></li>
                 <li id="login-link"><a href="../html/login.html">Login</a></li>
                 <li id="cadastro-link"><a href="../html/cadastro.html">Cadastro</a></li>
@@ -39,6 +39,8 @@
 
     <section class="filtros">
         <h3>Filtrar publicações</h3>
+        <input type="text" id="filtro-texto" placeholder="Buscar por nome ou raça">
+
         <form id="form-filtros">
             <select id="filtro-especie">
                 <option value="">Espécie</option>
@@ -106,6 +108,8 @@
         <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
         
         <a href="../html/favorito.html" class="btn-favoritos">⭐ Meus Favoritos</a>
+        <a href="meus-anuncios.html" class="perfil-link-btn">Meus Anúncios</a>
+
 
         <button onclick="fecharPerfil()" class="btn-fechar-perfil">Fechar</button>
     </div>

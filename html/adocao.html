@@ -24,11 +24,16 @@
 
   <main class="conteudo">
     <h2 class="titulo-pets">Pets Disponíveis para Adoção</h2>
+    <div class="botoes-adocao">
+      <button class="btn" id="btn-publicar-adocao">Cadastrar Pet para Adoção</button>
+    </div>
     <section class="carousel-section">
       <button id="prev-btn" class="nav-btn">&lsaquo;</button>
       <div id="pets-container" class="pets-list"></div>
       <button id="next-btn" class="nav-btn">&rsaquo;</button>
     </section>
+
+
   </main>
     <!-- Modal da publicação -->
     <div id="modal-publicacao" class="modal">
@@ -65,6 +70,12 @@
     </div>
 </div>
 
+  <script>
+    document.getElementById("btn-publicar-adocao").addEventListener("click", () => {
+      localStorage.setItem("status", "Para Adoção");
+      window.location.href = "cadastroNome.html";
+  });
+  </script>
 
 
   <script src="../js/adocao.js"></script>

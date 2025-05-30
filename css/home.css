@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #fbe9e7, #f3e5f5);
+    background: #fbe9e7;
     color: #333;
 }
 
@@ -37,7 +37,7 @@ nav a {
     color: #6A0DAD;
     padding: 8px 16px;
     border-radius: 20px;
-    background: #f5f5f5;
+    background: #ffffff;
     transition: background 0.3s ease;
 }
 
@@ -95,8 +95,7 @@ main {
 .filtros {
     text-align: center;
     padding: 30px;
-    background: #fafafa;
-    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    background: #fbe9e7;
 }
 
 .filtros h3 {
@@ -137,7 +136,7 @@ main {
     align-items: center;
     justify-content: center;
     padding: 30px;
-    background: #f9f4ff;
+    background: #fbe9e7;
     gap: 20px;
 }
 
@@ -183,7 +182,7 @@ main {
     color: white;
 }
 
-.status.achado {
+.status.encontrado {
     background: #4d79ff;
     color: white;
 }
@@ -375,4 +374,29 @@ main {
 
 .btn-favoritos:hover {
   background: #591094;
+}
+
+
+.perfil-link-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #4e73df;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.perfil-link-btn:hover {
+  background: #2e59d9;
+}
+
+#filtro-texto {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 250px;
 }
